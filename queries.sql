@@ -15,3 +15,34 @@ select * from animals where neutered is true;
 select * from animals where name != 'Gabumon';
 
 select * from animals where weight_kg between 10.4 and 17.3;
+
+begin;
+update animals set species = 'Digimon' where name like '%mon';
+update animals set species = 'Pokemon' where name not like '%mon';
+commit;
+select * from animals;
+
+begin;
+delete from animals;
+rollback;
+select * from animals;
+
+begin;
+delete from animals where date_of_birth > '2022-01-01';
+savepoint deltwentytwo;
+update animals set weight_kg = weight_kg * -1;
+rollback to savepoint deltwentytwo;
+update animals set weight_kg = weight_kg * -1 where weight_kg < 0;
+commit;
+
+select count(*) from animals;
+
+select count(*) from animals where escape_attempts = 0;
+
+select avg(weight_kg) from animals;
+
+select neutered, max(escape_attempts) from animals group by neutered;
+
+select species, min(weight_kg), max(weight_kg) from animals group by species;
+
+select species, avg(escape_attempts) from animals where date_of_birth between '1990-01-01' and '2000-01-01' group by species;
