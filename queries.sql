@@ -18,7 +18,7 @@ select * from animals where weight_kg between 10.4 and 17.3;
 
 begin;
 update animals set species = 'Digimon' where name like '%mon';
-update animals set species = 'Pokemon' where name not like '%mon';
+update animals set species = 'Pokemon' where species != null;
 commit;
 select * from animals;
 
