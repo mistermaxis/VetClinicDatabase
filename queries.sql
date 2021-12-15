@@ -17,6 +17,12 @@ select * from animals where name != 'Gabumon';
 select * from animals where weight_kg between 10.4 and 17.3;
 
 begin;
+update animals set species = 'unspecified';
+select * from animals;
+rollback;
+select * from animals;
+
+begin;
 update animals set species = 'Digimon' where name like '%mon';
 update animals set species = 'Pokemon' where species != null;
 commit;
