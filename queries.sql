@@ -24,7 +24,7 @@ select * from animals;
 
 begin;
 update animals set species = 'Digimon' where name like '%mon';
-update animals set species = 'Pokemon' where species != null;
+update animals set species = 'Pokemon' where species = null;
 commit;
 select * from animals;
 
