@@ -1,6 +1,6 @@
 /* Populate database with sample data. */
 
-//Animals
+/* Animals */
 insert into animals (name, date_of_birth, escape_attempts, neutered, weight_kg)
 values ('Agumon', date '2020-02-03', 0, true, 10.23);
 
@@ -31,7 +31,7 @@ values ('Boarmon', date '2005-07-07', 7, true, 20.4);
 insert into animals (name, date_of_birth, escape_attempts, neutered, weight_kg)
 values ('Blossom', date '1998-10-13', 3, true, 17.0);
 
-//Owners
+/* Owners */
 insert into owners (full_name, age)
 values ('Sam Smith', 34);
 
@@ -50,14 +50,14 @@ values ('Dean Winchester', 14);
 insert into owners (full_name, age)
 values ('Jodie Whittaker', 38);
 
-//Species
+/* Species */
 insert into species (name)
 values ('Pokemon');
 
 insert into species (name)
 values ('Digimon');
 
-//Modify animals
+/* Modify Animals */
 update animals set species_id = 1;
 update animals set species_id = 2 where name like '%mon';
 
