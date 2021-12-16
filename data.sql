@@ -1,5 +1,6 @@
 /* Populate database with sample data. */
 
+//Animals
 insert into animals (name, date_of_birth, escape_attempts, neutered, weight_kg)
 values ('Agumon', date '2020-02-03', 0, true, 10.23);
 
@@ -29,3 +30,40 @@ values ('Boarmon', date '2005-07-07', 7, true, 20.4);
 
 insert into animals (name, date_of_birth, escape_attempts, neutered, weight_kg)
 values ('Blossom', date '1998-10-13', 3, true, 17.0);
+
+//Owners
+insert into owners (full_name, age)
+values ('Sam Smith', 34);
+
+insert into owners (full_name, age)
+values ('Jennifer Orwell', 19);
+
+insert into owners (full_name, age)
+values ('Bob Sponge', 45);
+
+insert into owners (full_name, age)
+values ('Melody Pond', 77);
+
+insert into owners (full_name, age)
+values ('Dean Winchester', 14);
+
+insert into owners (full_name, age)
+values ('Jodie Whittaker', 38);
+
+//Species
+insert into species (name)
+values ('Pokemon');
+
+insert into species (name)
+values ('Digimon');
+
+//Modify animals
+update animals set species_id = 1;
+update animals set species_id = 2 where name like '%mon';
+
+update animals set owner_id = 1 where name = 'Agumon';
+update animals set owner_id = 2 where name = 'Gabumon' or name = 'Pikachu';
+update animals set owner_id = 3 where name = 'Devimon' or name = 'Plantmon';
+update animals set owner_id = 4
+  where name = 'Charmander' or name = 'Squirtle' or name = 'Blossom';
+update animals set owner_id = 5 where name = 'Angemon' or name = 'Boarmon';
