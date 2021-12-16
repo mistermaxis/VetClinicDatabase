@@ -67,9 +67,12 @@ full join owners on owner_id = owners.id group by full_name, name;
 select species.name, count (*) from animals
 join species on species_id = species.id group by species.name;
 
-select animals.name, owners.full_name from animals
+select animals.name from animals
 join owners on animals.owner_id = owners.id
 join species on animals.species_id = species.id
 where owners.full_name = 'Jennifer Orwell'
 and species.name = 'Digimon' group by animals.name, owners.full_name;
 
+select name from animals
+join owners on owner_id = owners.id
+where escape_attempts = 0;
