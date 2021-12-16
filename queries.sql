@@ -75,4 +75,5 @@ and species.name = 'Digimon' group by animals.name, owners.full_name;
 
 select name from animals
 join owners on owner_id = owners.id
-where escape_attempts = 0;
+where escape_attempts = 0 and owners.full_name = 'Dean Winchester';
+
