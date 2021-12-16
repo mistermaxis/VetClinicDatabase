@@ -77,3 +77,7 @@ select name from animals
 join owners on owner_id = owners.id
 where escape_attempts = 0 and owners.full_name = 'Dean Winchester';
 
+select max(c)
+from (select count(owner_id) as c
+from animals join owners on owner_id = owners.id
+group by owners.full_name) as owner;
