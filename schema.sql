@@ -12,17 +12,33 @@ CREATE TABLE species (
 );
 
 CREATE TABLE animals (
-    id serial primary key,
+    id int,
     name varchar(50),
     date_of_birth date,
     escape_attempts int,
     neutered bool,
     weight_kg decimal,
-    species_id int,
-    owner_id int,
-    foreign key(species_id)
-        references species(id),
-    foreign key(owner_id)
-        references owners(id),
+    species varchar(50),
 );
 
+alter table animals
+drop id;
+
+alter table animals
+add column id serial primary key;
+
+alter table animals
+add column species_id int;
+
+alter table animals
+add column owner_id int;
+
+alter table animals
+add constraint species_key
+foreign key(species_id)
+references species(id);
+
+alter table animals
+add constraint owners_key
+foreign key(owner_id)
+references owners(id);
