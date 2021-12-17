@@ -67,3 +67,30 @@ update animals set owner_id = 3 where name = 'Devimon' or name = 'Plantmon';
 update animals set owner_id = 4
   where name = 'Charmander' or name = 'Squirtle' or name = 'Blossom';
 update animals set owner_id = 5 where name = 'Angemon' or name = 'Boarmon';
+
+/*    Add vets    */
+insert into vets (name, age, graduation)
+values ('William Tatcher', 34, date '2000-04-23');
+        
+insert into vets (name, age, graduation)
+values ('Maisy Smith', 26, date '2019-01-17');
+
+insert into vets (name, age, graduation)
+values ('Stephanie Mendez', 64, date '1981-05-04');
+        
+insert into vets (name, age, graduation)
+values ('Jack Harkness', 38, date '2008-06-08');
+
+/*    Add specialties   */
+insert into specializations (vet_id, species_id)
+values ((select id from vets where name = 'William Tatcher'), (select id from species where name = 'Pokemon'));
+
+insert into specializations (vet_id, species_id)
+values ((select id from vets where name = 'Stephanie Mendez'), (select id from species where name = 'Digimon'));
+
+insert into specializations (vet_id, species_id)
+values ((select id from vets where name = 'Stephanie Mendez'), (select id from species where name = 'Pokemon'));
+
+insert into specializations (vet_id, species_id)
+values ((select id from vets where name = 'Jack Harkness'), (select id from species where name = 'Digimon'));
+
