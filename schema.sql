@@ -58,3 +58,19 @@ species_id int,
 constraint vet_id foreign key(vet_id) references vets(id),
 constraint species_id foreign key(species_id) references species(id)
 );
+
+CREATE TABLE VISITS(
+    ANIMALS_ID INT,
+    CONSTRAINT ANIMALS_ID FOREIGN KEY(ANIMALS_ID) REFERENCES ANIMALS(ID),
+    VETS_ID INT,
+    CONSTRAINT VETS_ID FOREIGN KEY(VETS_ID) REFERENCES VETS(ID),
+    DATE_OF_VISIT DATE
+);
+
+create table visits (
+animal_id int,
+vet_id int,
+constraint animal_id foreign key(animal_id) references animals(id),
+constraint vet_id foreign key(vet_id) references vets(id),
+date_of_visit date,
+);
