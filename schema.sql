@@ -42,3 +42,27 @@ alter table animals
 add constraint owners_key
 foreign key(owner_id)
 references owners(id);
+
+/*      Join Table      */
+
+create table vets (
+id serial primary key,
+name varchar(50),
+age int,
+graduation date,
+);
+
+create table specializations (
+vet_id int,
+species_id int,
+constraint vet_id foreign key(vet_id) references vets(id),
+constraint species_id foreign key(species_id) references species(id)
+);
+
+create table visits (
+animal_id int,
+vet_id int,
+constraint animal_id foreign key(animal_id) references animals(id),
+constraint vet_id foreign key(vet_id) references vets(id),
+date_of_visit date,
+);
