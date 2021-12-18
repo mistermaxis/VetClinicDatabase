@@ -113,3 +113,14 @@ select animals.name from animals
 join visits on visits.animal_id = animals.id
 join vets on visits.vet_id = vets.id
 where vets.name = 'Maisy Smith' order by visits.date_of_visit limit 1;
+
+select * from animals
+join visits on visits.animal_id = animals.id
+join vets on visits.vet_id = vets.id
+order by visits.date_of_visit desc limit 1;
+
+select vets.name, count(animal_id) from specializations
+right join vets on vets.id = specializations.vet_id
+right join visits on visits.vet_id = vets.id
+where vets.id not in (select vet_id from specializations)
+group by vets.name;
