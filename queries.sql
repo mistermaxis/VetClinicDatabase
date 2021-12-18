@@ -81,3 +81,35 @@ select max(c)
 from (select count(owner_id) as c
 from animals join owners on owner_id = owners.id
 group by owners.full_name) as owner;
+
+/*    Join tables visits and specialization queries   */
+
+select animals.name from animals 
+join visits on animals.id = visits.animal_id
+join vets on visits.vet_id = vets.id
+where vets.name = 'William Tatcher'
+order by visits.date_of_visit desc limit 1;
+
+select count(*) from (select animals.name from animals
+join visits on visits.animal_id = animals.id
+join vets on visits.vet_id = vets.id
+where vets.name = 'Stephanie Mendez') as pets;
+
+select vets.name, species.name from vets
+full join specializations on specializations.vet_id = vets.id
+full join species on specializations.species_id = species.id;
+
+select animals.name from animals
+join visits on visits.animal_id = animals.id
+join vets on visits.vet_id = vets.id
+where vets.name = 'Stephanie Mendez'
+and visits.date_of_visit between '2020-04-01' and '2020-08-01';
+
+select animals.name, count(*) from animals
+join visits on visits.animal_id = animals.id
+group by animals.name order by count desc limit 1;
+
+select animals.name from animals
+join visits on visits.animal_id = animals.id
+join vets on visits.vet_id = vets.id
+where vets.name = 'Maisy Smith' order by visits.date_of_visit limit 1;
