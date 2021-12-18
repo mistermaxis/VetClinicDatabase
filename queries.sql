@@ -124,3 +124,11 @@ right join vets on vets.id = specializations.vet_id
 right join visits on visits.vet_id = vets.id
 where vets.id not in (select vet_id from specializations)
 group by vets.name;
+
+select ms.species_id, count(ms.species_id) from (
+select animals.name, animals.species_id  from animals
+join visits on visits.animal_id = animals.id
+join vets on visits.vet_id = vets.id
+where vets.name = 'Maisy Smith') as ms group by ms.species_id
+order by ms.species_id desc limit 1;
+
